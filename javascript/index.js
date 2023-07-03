@@ -93,9 +93,15 @@ obtainInstruction('steak', 0)
   })
   .then( (step8) => {
     document.querySelector("#steak").innerHTML += `<li>${step8}</li>`;
+    //document.querySelector("#steak").innerHTML += `<li>Steak is ready!</li>`;
+
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  .finally(() => {
     document.querySelector("#steak").innerHTML += `<li>Steak is ready!</li>`;
 
-   
   })
 
 
@@ -122,6 +128,8 @@ try {
 
   const step4 = await obtainInstruction("broccoli", 4);
   document.querySelector("#broccoli").innerHTML += `<li>${step4}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
+
 } catch (error){
   console.log(error);
 }
@@ -129,4 +137,24 @@ try {
 makeBroccoli();
 
 // Bonus 2 - Promise all
+Promise.all([
+  obtainInstruction("brusselsSprouts", 0),
+  obtainInstruction("brusselsSprouts", 1),
+  obtainInstruction("brusselsSprouts", 2),
+  obtainInstruction("brusselsSprouts", 3),
+  obtainInstruction("brusselsSprouts", 4),
+  obtainInstruction("brusselsSprouts", 5),
+  obtainInstruction("brusselsSprouts", 6),
+  obtainInstruction("brusselsSprouts", 7),
+])
+  .then((steps) => {
+    steps.forEach((step) => {
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>${step}</li>`;
+    });
+    document.querySelector("#brusselsSproutsImg").hidden = false;
+  })
+  .catch((error) => console.log(error))
+  .finally(() => {
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels Sprouts are ready!</li>`;
 
+  })
