@@ -43,8 +43,10 @@ getInstruction('mashedPotatoes', 0, (step1) => {
         getInstruction('mashedPotatoes', 4, (step5) => {
           document.querySelector("#mashedPotatoes").innerHTML += `<li>${step5}</li>`;
 
-
             document.querySelector("#mashedPotatoes").innerHTML += `<li>mashed potatoes are ready!</li>`;
+
+            document.querySelector("#mashedPotatoesImg").removeAttribute("hidden");
+
 
 
           
@@ -101,6 +103,7 @@ obtainInstruction('steak', 0)
   })
   .finally(() => {
     document.querySelector("#steak").innerHTML += `<li>Steak is ready!</li>`;
+    document.querySelector("#steakImg").removeAttribute("hidden");
 
   })
 
@@ -128,7 +131,10 @@ try {
 
   const step4 = await obtainInstruction("broccoli", 4);
   document.querySelector("#broccoli").innerHTML += `<li>${step4}</li>`;
+
     document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
+
+    document.querySelector("#broccoliImg").removeAttribute("hidden");
 
 } catch (error){
   console.log(error);
